@@ -8,7 +8,7 @@
 > * [Vision 2030](#green_circle-vision-2030)
 > * [Stc ](#purple_circleabout-stc)
 > * [Stc-tv](#orange_circle-about-stc-tv)
-> * [Data Review]
+> * [Data Review](#)
 > * [Business problem](#)
 > * [EDA](#bar_charteda)
 > * [Approach](#)
