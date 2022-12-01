@@ -1,24 +1,22 @@
 # Stc-tv Recommendation System - HDFS and Mapreduce Capstone Project
 
 
-<img src="https://drive.google.com/uc?export=view&id=14pxZ2LMX6Yvn3NrDHi5cluWCldARvKR0"/>
-
+<img src="https://drive.google.com/uc?export=view&id=1ISI6tfW3QMWiWWP95FuhvuHPkdZY2NGq"/>
 
 ## :round_pushpin: Table of contents
 > * [Table of contents](#round_pushpin-table-of-contents)
 > * [Vision 2030](#green_circle-vision-2030)
-> * [About Stc & Stc-tv](#purple_circleabout-stc)
+> * [Stc ](#purple_circleabout-stc)
 > * [Stc-tv](#orange_circle-about-stc-tv)
-> * [Our target](#dartour-target)
-> * [Stc-tv dataset](#card_index_dividersstc-tv-dataset)
+> * [Data Review]
+> * [Business problem](#)
 > * [EDA](#bar_charteda)
-> * [Dashboard](#bar_chartchart_with_downwards_trendchart_with_upwards_trenddashboard)
-> * [Preprocessing](#gear-preprocessing)
-> * [Recommendation System](#black_small_squarerecommendation-system)
-> * [Real world project](#black_small_squarereal-world-project)
+> * [Approach](#)
+> * [MapReduce Process](#)
+> * [Implementation](#)
+> * [Ruselt](#)
 > * [Future work](#black_small_squarefuture-work)
 > * [Web blog](#black_small_squarereal-Web_blog)
-> * [Resource](#file_folder-resource)
 > * [Team Memebers](#octocatteam-memebers)
 
 ## :green_circle:	 Vision 2030
@@ -34,12 +32,9 @@ In the field of digital media STC created (STC TV) to be the pioneer media provi
 STC TV is an entertainment streaming service that provide you with the best movies, tv shows, documentaries, kids shows & more.
 
 
-##  :dart:	Our target
-So our vision target for this project is to contribute efficiently in developing a recommendation system for the viewer which will improve his quality of life, with the implementing the latest AI technology.
-
-## :card_index_dividers:	Stc-tv dataset
+## :card_index_dividers:	Data Review
 STC website provides the STC-TV dataset that was used in this case study.
-It consists of 13 columns and 3598607 rows.
+It consists of 13 columns and 1048576 rows
 
 ### Columns:
 > * User_id_maped : Unique ID
@@ -56,100 +51,70 @@ It consists of 13 columns and 3598607 rows.
 > * Original_name : The Official name of the movie/Series
 > * Rating
 
-We used another dataset that had the same columns but with an additional column called "rating", and because the program_desc column wasn't enough for the recommendation system that we wanted to build,we collected data for the description by using web scraping
-The rating and description columns are added to the main dataset. 
+
+## Business problem
+
+The business problem here is that we want an insight into the movies/series to build a future
+decision and answer those questions: what kind of movies/series to go for? , what is the
+feedback on the current movies/series? and what kind of movies/series do users prefer?
+
 
 ##  :bar_chart:	EDA
-### - The percentage of movies and series that STC-TV have.
 
-<img src="https://drive.google.com/uc?export=view&id=10DXqQBTKNQBE_w7u6YFp941XZ9TkBjgs"/>
-
-
-### - Animation is the most popular genre in movies and series, while horror is the least popular.
-
-<img src="https://drive.google.com/uc?export=view&id=1UQR9xxQJ6NV0Awzm_tuHyW1lI6neDbW1"/>
-<img src="https://drive.google.com/uc?export=view&id=18a9yFai903JyDzFP4jXiU9_7biVvR0GQ"/>
-
-
-### - This plots shows the total number of users watching and the total duration spent by program class. The majority of time is spent on series, which is understandable given the series long duration, but most users prefer to watch movies. 
-
-<img src="https://drive.google.com/uc?export=view&id=1G4g3MDL3241h-1gai9walvwwFyaQe64A"/>
-
-### - Here, we study the relationship and the user's behavior against the HD flag. As you can see, the majority prefers HD for series and movies. 
-<img src="https://drive.google.com/uc?export=view&id=1JIDWojZEURBrf8yAqURjwmYHxqsmYV_y"/>
-
-### - The highest total watched program is "The Boss Baby" and the lowest is "The Amazing Spider-Man".
-<img src="https://drive.google.com/uc?export=view&id=1d41lyt2v_Gu3LZ07X3H1NSn63Xot2pzf"/>
-
-
-### - The number of users who watched and rated the program class
-<img src="https://drive.google.com/uc?export=view&id=1KRdSCYSvaq9b_U7VAw9nvoQHDR4DGKBw"/>
-
-
-### - The most frequently used words in the program description
-<img src="https://drive.google.com/uc?export=view&id=1gNu-1QiOuU91Ur8hc3sSi37dZKr-ScW3"/>
+<img src="https://drive.google.com/uc?export=view&id=1VskBxHOlTph3rtQsJ5JZbzehJIEyLnpX"/>
 
 
 
-##  :bar_chart:	:chart_with_downwards_trend:	:chart_with_upwards_trend:	Dashboard
-<img src="https://drive.google.com/uc?export=view&id=1bzgvKqS6F_YNRp1nWUNCjgHvxtVhXVG_"/>
+## Approach
+
+Our approach to solving this problem is building a MapReduce function that counts the views of the movies/series along with the names of the movies/series and counts the average rating provided by users. We implemented a python MapReduce function and we used Hadoop MapReduce to run the code.
+
+
+
+## MapReduce Process
+
+Hadoop MapReduce processes the massive amount of structured and unstructured data
+stored in HDFS. MapReduce works in five phases:
+
+Input Splitting:  MapReduce splits the inputs into chunks called input splits; each piece represents a portion of work with a single mapper task.
+Mapping: The input data is processed and divided into smaller segments.
+Shuffling: The output of the mapper phase is passed to the reducer after removing any duplicate values and grouping the values
+Sorting: It's responsible for merging and sorting the output of the mappers. 
+Reducing: the intermediate values from the shuffling step are reduced to produce a single output value that summarizes the entire dataset. HDFS is then used to store the final output.
+
+## Implementation
+<img src="https://drive.google.com/uc?export=view&id=1lHJ2vPSc5NzSyzGlF4cskBpz_T6oKhD3"/>
+
+mrjobis a package for writing map-reduce jobs in python very quickly, it abstracts away all the complexities of dealing with the streaming interfaces
+
+<img src="https://drive.google.com/uc?export=view&id=157eNAJgjs1S-Bi6K56xrk4LDuvjDWpgQ"/>
+
+First we created a class named NoRatings (number of Ratings) then we created a function named steps and pass the mapper and the reducer for MRStep.
+
+Then we created a mapper function which is read the data line by line by using "reader" and it's for loop to create a tuple and dictionary then store the rate, movies and program_genre to return them.
+
+<img src="https://drive.google.com/uc?export=view&id=1l4xFn4mMHlpjSXRtVyZ0gTjuNLxkZi7R"/>
+
+Finally, we create the reducing function that counts the total rate and total views, takes the average, and returns the program name with its average and total views.
+
+
+## Ruselt
+
+Running the python code into Hadoop
+<img src="https://drive.google.com/uc?export=view&id=1v5W4YYXeRvrody3LM1kIbjkQiwMPLvKb"/>
+As you can see the GPU time spent is 98450 milliseconds
+
+<img src="https://drive.google.com/uc?export=view&id=1tZsGCLfjlyTCob-Mk7h14Ql5_DMbL19-"/>
+
+## Future work
 
 
 
 
 
-## :gear:	 Preprocessing
-
-First, we checked for missing values.
-All good except the "program_desc" column, so we reset the program_desc column to have this information (genre, class, name, hd) because we will be adding a description column that was gathered from web scraping.
-
-Then we set the program genre for the programs that were not specified. 
-
-we dropped unnecessary columns like: season, episode, series_title, date and program_name.
-
-Converting the duration seconds to hours by divide the sec to 3600.
-
-Then we join the description(gathered from web scraping) with movies names. Then we dropped the null and duplicated values.
-
-
-
-After that, we created a function that did the following process: 
-made the text a string with all characters in lower case, removed all punctuation and differentiating characters from the text, splits a string into a list and finally, the word lemmatizer.
-
-After cleaning the data we apply CountVectorizer(Converting a collection of text documents to a matrix of token counts) on the description text with max_df=0.80, min_df=2 parameters.
-
-Finally, we use pickle to save the matrices. 
-
-
-## :black_small_square:		Recommendation System
- Recommendation Systems are a type of information filtering systems as they improve the quality of search results and provides items that are more relevant to the search item or are realted to the search history of the user.
-
-> * Content-based : 
-In the content-based recommendation system we created three functions:
-The first one for the program description that contains (the movie name, movie class, movie genre, and whether it's HD or not),
-The second function was for the description that we gathered from the web scrapping.
-The third function contains both the program description and the description.
-
-> * Collaborative Filtering: 
-In the collaborative filtering, we used the user's ids, movies names, and ratings.
-
-
-
-## :black_small_square:	Real world project 
-<img src="https://drive.google.com/uc?export=view&id=1-ueAQ-hmeRI_JngiBj2PTZRA7aL1ICZf"/>
-<h3><a href="https://github.com/alhassanm/BDAI-demo_project-capstone-project-1">Go to domo project repository for this project</a></h3>
-
- 
-## :black_small_square:	Future work
-> * Gathering pictures
-> * Deploy the webpage in global  server
-> * Upload pictures for the results in webpage
 
 ## :black_small_square:	Web blog
-https://biggerthandata.blogspot.com/2022/11/stc-tv-recommendation-system-ml.html
- 
-## :file_folder: Resource
-- Data Resource : https://lab.stc.com.sa/dataset/ar/ 
+https://biggerthandata.blogspot.com/2022/11/hadoop-and-mapreduce-weekly-project.html
 
 ## :octocat:	Team Memebers
 
