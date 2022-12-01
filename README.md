@@ -1,4 +1,4 @@
-# Stc-tv Recommendation System - ML Capstone Project
+# Stc-tv Recommendation System - Hadoop files and Mapreduce Capstone Project
 
 
 <img src="https://drive.google.com/uc?export=view&id=14pxZ2LMX6Yvn3NrDHi5cluWCldARvKR0"/>
